@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="user_description">
+    <h1>Sign up to SciBlog</h1>
+        <form action="{% url 'user' %}" method="post">
+        {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.user_name|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ form.email|as_crispy_field }}
+              </div>
+                <div class="form-group col-md-6 mb-0">
+                {{ form.password|as_crispy_field }}
+              </div>
+                <div class="form-group col-md-6 mb-0">
+                {{ form.lab|as_crispy_field }}
+                </div>
+             </div>
+        <button type="submit">Sign up</button>
+        </form>
+    </div>
+
+    <style>
+    .user_description{
+
+        text-align: center;
+        margin-top: 150px;
+    }
+    .user_description h1 {
+        color: ghostwhite;
+        font-family: "American Typewriter", serif;
+    }
+
+    .user_description .form-group {
+        margin: 0px auto;
+    }
+
+    .user_description label {
+        color: white;
+    }
+
+    .user_description input {
+        width: 400px;
+        margin: 0px auto;
+    }
+
+    button {
+        border:1px solid #fff;
+        background:#22c6a6;
+        color:#EEEEEE;
+
+        padding: 8px 20px;
+        text-decoration:none;
+        font-weight:bold;
+        border-radius:5px;
+        cursor:pointer;
+
+        left: 50%;
+        position: absolute;
+        top: 70%;
+        transform: translate(-50%, -55%);
+        text-align: center;
+        }
+    </style>
+
+{% endblock content %}
