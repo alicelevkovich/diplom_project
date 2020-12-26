@@ -16,8 +16,14 @@ class UserProfile(forms.Form):
     password = forms.CharField(max_length=64, widget=forms.PasswordInput())
     lab = forms.ModelChoiceField(queryset=Lab.objects.all())
     bio = forms.CharField(widget=forms.Textarea)
-    avatar = forms.ImageField()
+    # avatar = forms.ImageField()
     position = forms.CharField(max_length=128)
+
+
+# class ImageForm(forms.ModelForm):
+#     class Meta:
+#         model = Image
+#         fields = ('image',)
 
 
 class LogInUser(forms.Form):
@@ -26,7 +32,7 @@ class LogInUser(forms.Form):
 
 
 class CreatePost(forms.Form):
-    content = forms.CharField(widget=forms.Textarea)
+    content = forms.CharField()
 
 
 class CommentForm(forms.ModelForm):

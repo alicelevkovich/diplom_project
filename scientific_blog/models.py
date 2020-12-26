@@ -34,6 +34,10 @@ class User(models.Model):
         return f'{self.user_name} {self.email}'
 
 
+# class Image(models.Model):
+#     image = models.ImageField(upload_to='images/', null=True, blank=True)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True, default='', null=True)
     slug = models.SlugField(max_length=200, unique=True, null=True)

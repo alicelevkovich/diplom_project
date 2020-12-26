@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from scientific_blog.views import CreateUserView, HomeView, LogInUserView, PostList, post_detail, UserProfileView, logout_view, ContactView
+from scientific_blog.views import CreateUserView, HomeView, LogInUserView, PostList,\
+    post_detail, UserProfileView, logout_view, ContactView, CreatePostView
 
 
 urlpatterns = [
@@ -11,6 +12,8 @@ urlpatterns = [
     path('profile/', login_required(UserProfileView.as_view()), name='profile'),
     path('logout/', logout_view, name='logout'),
     path('contact_info/', ContactView.as_view(), name='contact_info'),
+    path('create_post/', CreatePostView.as_view(), name='create_post'),
+    # path('upload/', image_upload_view, name='acc_image'),
     path('<slug:slug>/', post_detail, name='post'),
 
 

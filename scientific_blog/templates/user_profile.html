@@ -55,6 +55,11 @@
 
             </form>
 
+            <form action="{% url 'create_post' %}" method="post">
+                {% csrf_token %}
+                {{ create_post_form.as_p }}
+                <button type="submit"  style="margin-left: -800px; ">Create</button>
+            </form>
 
             <form action="{% url 'logout' %}">
                 <button type="submit" class="btn btn-primary  btn-lg">Log out</button>
@@ -120,7 +125,7 @@
 
     .decoration .form-row{
         margin-left: 800px;
-        margin-top: -250px;
+        margin-top: -50px;
     }
 
     .decoration .username{

@@ -83,7 +83,7 @@ class CreatePostView(View):
 
     def get(self, request):
         context = {
-            'form': CreatePost(),
+            'create_post_form': CreatePost(),
         }
         return render(request, 'user_profile.html', context=context)
 
@@ -144,6 +144,7 @@ class UserProfileView(View):
                                          'position': user_obj.position}),
             'user': user_obj,
             'user_post': user_post,
+            'create_post_form': CreatePost(),
         }
         return render(request, 'user_profile.html', context=context)
 
@@ -152,7 +153,7 @@ class UserProfileView(View):
         form = UserProfile(request.POST, request.FILES)
         if form.is_valid():
             user.name = form.cleaned_data.get("name")
-            user.avatar = form.cleaned_data.get("avatar")
+            # user.avatar = form.cleaned_data.get("avatar")
             user.last_name = form.cleaned_data.get("last_name")
             user.email = form.cleaned_data.get("email")
             user.bio = form.cleaned_data.get("bio")
@@ -165,6 +166,18 @@ class UserProfileView(View):
             return render(request, 'user_profile.html', context={'form': form, 'user': User.objects.get(id=user.id)})
         else:
             return render(request, 'LogIn.html')
+
+
+# def image_upload_view(request):
+#     if request.method == 'POST':
+#         form = ImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             img_obj = form.instance
+#             return render(request, 'user_profile.html', {'form': form, 'img_obj': img_obj})
+#     else:
+#         form = ImageForm()
+#     return render(request, 'user_profile.html', {'form': form})
 
 
 class ContactView(View):
